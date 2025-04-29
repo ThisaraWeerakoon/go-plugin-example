@@ -17,16 +17,16 @@ func main() {
 
 	// Load and use log plugin
 	fmt.Println("\n=== Using Log Plugin ===")
-	logPlugin := loadPlugin(simpleLogPluginPath)
-	if logPlugin != nil {
-		logPlugin.PrintMessage("Hello from log plugin!")
+	simpleLogPlugin := loadPlugin(simpleLogPluginPath)
+	if simpleLogPlugin != nil {
+		simpleLogPlugin.PrintMessage("Hello from log plugin!")
 	}
 
 	// Load and use fancy plugin
 	fmt.Println("\n=== Using Fancy Plugin ===")
-	fancyPlugin := loadPlugin(fancyLogPluginPath)
-	if fancyPlugin != nil {
-		fancyPlugin.PrintMessage("Hello from fancy plugin!")
+	fancyLogPlugin := loadPlugin(fancyLogPluginPath)
+	if fancyLogPlugin != nil {
+		fancyLogPlugin.PrintMessage("Hello from fancy plugin!")
 	}
 }
 
