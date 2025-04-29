@@ -12,21 +12,21 @@ func main() {
 	fmt.Println("Hello World! Log Plugin Demo")
 
 	// Load plugins directly by path (Can use config.json also)
-	simpleLogPluginPath := "simple-log-plugin/plugin.so"
-	fancyLogPluginPath := "fancy-log-plugin/plugin.so"
+	simpleLogPluginPath := "../simple-log-plugin/plugin.so"
+	fancyLogPluginPath := "../fancy-log-plugin/plugin.so"
 
 	// Load and use log plugin
 	fmt.Println("\n=== Using Log Plugin ===")
 	simpleLogPlugin := loadPlugin(simpleLogPluginPath)
 	if simpleLogPlugin != nil {
-		simpleLogPlugin.PrintMessage("Hello from log plugin!")
+		simpleLogPlugin.PrintMessage("Hello from simple log plugin!")
 	}
 
 	// Load and use fancy plugin
 	fmt.Println("\n=== Using Fancy Plugin ===")
 	fancyLogPlugin := loadPlugin(fancyLogPluginPath)
 	if fancyLogPlugin != nil {
-		fancyLogPlugin.PrintMessage("Hello from fancy plugin!")
+		fancyLogPlugin.PrintMessage("Hello from fancy log plugin!")
 	}
 }
 
