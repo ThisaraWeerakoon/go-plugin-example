@@ -68,3 +68,55 @@ sequenceDiagram
         Main->>Main: Handle Error
     end
 ```
+
+## Class Diagram
+
+This diagram focuses on the specific interfaces, structs, and their relationships.
+
+```mermaid
+classDiagram
+    %% Interface definition
+    class LogPlugin {
+        <<interface>>
+        +PrintMessage(message string)
+    }
+    
+    %% Main application
+    class Main {
+        +main()
+        +loadPlugin(pluginPath string) LogPlugin
+    }
+    
+    %% Plugin implementations
+    class SimpleLogPluginStr {
+        +PrintMessage(message string)
+    }
+    
+    class FancyLogPluginStr {
+        +PrintMessage(message string)
+    }
+    
+    %% Plugin exports
+    class SimplePluginExport {
+        +Plugin SimpleLogPluginStr
+    }
+    
+    class FancyPluginExport {
+        +Plugin FancyLogPluginStr
+    }
+    
+    %% Plugin shared object files
+    class SimplePluginSO["simple-log-plugin.so"]
+    class FancyPluginSO["fancy-log-plugin.so"]
+    
+    %% Relationships
+    Main ..> LogPlugin : uses
+    SimpleLogPluginStr ..|> LogPlugin : implements
+    FancyLogPluginStr ..|> LogPlugin : implements
+    SimplePluginExport -- SimpleLogPluginStr : exports
+    FancyPluginExport -- FancyLogPluginStr : exports
+    Main ..> SimplePluginSO : loads
+    Main ..> FancyPluginSO : loads
+    SimplePluginSO -- SimplePluginExport : contains
+    FancyPluginSO -- FancyPluginExport : contains
+```
